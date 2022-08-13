@@ -5,9 +5,11 @@ const collection = mongodb.db.collection(collectionName)
 
 const model = {
 
-    listEvent: () => {
+    listEvent:  () => {
+        console.log("model list event")
         const cursor = collection.find()
-        return cursor.toArray()
+        // console.log(await cursor.toArray())
+        return  cursor.toArray()
     },
 
     getEvent: eventID => {

@@ -6,12 +6,22 @@ const eventModel = require('../models/eventModel.js')
 const controller = {
 
     listEvent: async (req, res) => {
-        const eventData = await eventModel.listEvent()
+        console.log("listing events")
 
-        res.render('showEvents.ejs', {
-            myPageTitle: "All Events",
-            events: eventData
-        })
+        try {
+            const eventData = await eventModel.listEvent()
+
+            console.log(eventData)
+    
+            res.render('showEvents.ejs', {
+                myPageTitle: "All Events",
+                events: eventData
+            })
+            
+        } catch (error) {
+            console.log(error)
+        }
+
     },
 
     newEventForm: (req, res) => {
