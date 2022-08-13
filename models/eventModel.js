@@ -8,7 +8,6 @@ const model = {
     listEvent:  () => {
         console.log("model list event")
         const cursor = collection.find()
-        // console.log(await cursor.toArray())
         return  cursor.toArray()
     },
 

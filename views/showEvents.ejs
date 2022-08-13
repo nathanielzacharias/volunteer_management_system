@@ -5,7 +5,7 @@
 </div>
 
 <div class="row container">
-  <div class="four columns"><a href="/createNewEvent">Create new event</a></div>
+  <div class="four columns"><a href="/events/new">Create new event</a></div>
 </div>
 
 <div class="container">
@@ -27,7 +27,7 @@
                 <td><%= e.date.toLocaleString('default', {month: 'long'})%></td>
                 <td><%= e.eventTitle %></td>
                 <td><%= e.description %></td>
-                <td><button>Roles</button></td>
+                <td><button>Delete</button></td>
             </tr>
         
         <% }) %>
