@@ -1,10 +1,16 @@
 //const Product = require("../models/user");
 const mongoose = require("mongoose");
 const User = require("../models/user");
-const mongoURI = 'mongodb://localhost:27017/volunteer_management_system'
+// const mongoURI = 'mongodb://localhost:27017/volunteer_management_system'
 //mongoose.set('useFindAndModify', false)
 //mongoose.connect( mongoURI, { useNewUrlParser: true, useUnifiedTopology: true } )
 
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const mongoURI = "mongodb+srv://nathanielproject2:ILoveMcSpicy@cluster0.ru8xaxp.mongodb.net/?retryWrites=true&w=majority";
+const dbName = "cloud_volunteer_management_system"
+
+const Client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const Db = Client.db(dbName)
 
 //create your array. i inserted only 3 objects here
 const users = [   

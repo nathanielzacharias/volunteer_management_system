@@ -1,0 +1,37 @@
+<%- include('partials/header'); -%>
+
+    <form>
+        <div class="container">
+            <div>
+                <label for="uname"><b>Choose a username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+            </div>
+
+            <div>
+                <label for="psw"><b>Choose a password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+        
+            <div>
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="alex@email.com" name="email" required>
+            </div>
+
+            <div>
+                <p><b>Are you an admin?</b></p>
+                
+                <fieldset  class="inline-element" >
+
+                    <input type="radio" name="admin" value="false" checked="checked" />
+                    <label for="admin" class="inline-label">No</label>
+
+                    <input type="radio" name="admin" value="true" />
+                    <label for="admin" class="inline-label">Yes</label>
+                </fieldset>
+            </div>
+
+            <button type="submit">Register</button>
+        </div>
+    </form>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+  <h2><%= myPageTitle %></h2>
+</div>
+
+<div class="row container">
+  <div class="four columns"><a href="/createNewEvent">Create new event</a></div>
+</div>
+
+<div class="container">
+    <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Event Title</th>
+            <th>Description</th>
+            <th> </th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <% events.forEach(e => { %>
+
+            <tr>
+                <td><%= e.date.toLocaleString('default', {month: 'long'})%></td>
+                <td><%= e.eventTitle %></td>
+                <td><%= e.description %></td>
+                <td><button>Roles</button></td>
+            </tr>
+        
+        <% }) %>
+
+        </tbody>
+      </table>
+</div>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,24 @@
+<%- include('partials/header'); -%>
+
+    <form method="POST" action="/events">
+        <div class="container">
+            <div>
+                <label for="eventTitle"><b>Event title</b></label>
+                <input type="text" placeholder="Event title" name="eventTitle" required>
+            </div>
+
+            <div>
+                <label for="description"><b>Description of event</b></label>
+                <input type="text" placeholder="short description" name="description" required>
+            </div>
+
+            <div>
+                <label for="date"><b>Date of event</b></label>
+                <input type="date" placeholder="DD/MM/YYYY" name="date" required>
+            </div>
+        
+            <button type="submit">Create</button>
+        </div>
+    </form>
+
+<%- include('partials/footer'); -%>

@@ -6,11 +6,16 @@ const mongoose = require('mongoose')
 //express-session
 //bcrypt
 
+const controller = require('./controllers/app_controller.js')
+
 const app = express()
 const port = process.env.PORT || 3000
 
 //use ejs template engine
 app.set('view engine', 'ejs')
+
+//Use public dir:
+app.use(express.static('public'))
 
 //use middleware for request parsing
 app.use(express.urlencoded({extended: true}))
@@ -34,23 +39,29 @@ app.get('/register', (req, res) => {
   res.render('registerForm.ejs');
 })
 
-app.get('/admin/:userID', (req, res) => {
-  res.render('showAdmin.ejs', {
-    userID: adminsCollection[req.params.userID]
-  });
-})
+app.get('/events', controller.listEvent)
 
-app.get('/volunteer/:userID', (req, res) => {
-  res.render('showVolunteer.ejs', {
-    userID: volunteersCollection[req.params.userID]
-  });
-})
+// create action
+app.get('/createNewEvent', controller.newEventForm)
+app.post('/events', controller.createNewEvent)
 
-app.get('/:indexOfEvent', (req, res) => {
-  res.render('showEvent.ejs', {
-    eventID: eventsCollection[req.params.indexOfEvent]
-  });
-})
+// app.get('/admin/:userID', (req, res) => {
+//   res.render('showAdmin.ejs', {
+//     userID: adminsCollection[req.params.userID]
+//   });
+// })
+
+// app.get('/volunteer/:userID', (req, res) => {
+//   res.render('showVolunteer.ejs', {
+//     userID: volunteersCollection[req.params.userID]
+//   });
+// })
+
+// app.get('/:indexOfEvent', (req, res) => {
+//   res.render('showEvent.ejs', {
+//     eventID: eventsCollection[req.params.indexOfEvent]
+//   });
+// })
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`)
