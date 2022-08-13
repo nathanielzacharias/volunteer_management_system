@@ -53,19 +53,13 @@ app.get('/register', (req, res) => {
   res.render('registerForm.ejs');
 })
 
-//create new event
-// app.get('/createNewEvent', eventController.newEventForm)
-// app.post('/events', eventController.createNewEvent)
-
 //Event
 // 1) Index
 app.get('/events', eventController.indexEvent)
 // 2) New
-// app.get("/listings/new", authMiddleware.isAuthenticated, listingController.showNewListingForm);
 app.get('/events/new', eventController.newEventForm)
-// app.get('/events/create', eventController.newEventForm)
-// // 3) Show
-// app.get("/listings/:listingId", authMiddleware.isAuthenticated, listingController.showListing);
+// 3) Show
+app.get("/events/:eventsId", eventController.showEvent);
 // // 4) Create
 // app.post("/listings", upload.single("listing_image"), listingController.createListing);
 // // 5) Destroy

@@ -5,23 +5,28 @@ const collection = mongodb.db.collection(collectionName)
 
 const model = {
 
-    listEvent:  () => {
+    listEvents:  () => {
         console.log("model list event")
         const cursor = collection.find()
         return  cursor.toArray()
     },
 
-    getEvent: eventID => {
-        return collection.findOne(ObjectId(eventID))
+    showEvent: () => {
+        const cursor = collection.findOne()
+        return cursor
     },
 
-    createEvent: fields => {
-        return collection.insertOne(fields)
-    },
+    // getEvent: eventID => {
+    //     return collection.findOne(ObjectId(eventID))
+    // },
 
-    deleteEvent: (docID) => {
-        collection.deleteOne(docID)
-    }
+    // createEvent: fields => {
+    //     return collection.insertOne(fields)
+    // },
+
+    // deleteEvent: (docID) => {
+    //     collection.deleteOne(docID)
+    // }
 
 }
 

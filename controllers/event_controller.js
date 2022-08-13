@@ -5,26 +5,37 @@ const eventModel = require('../models/eventModel.js')
 const controller = {
 
     indexEvent: async (req, res) => {
-        console.log("listing events")
-
         try {
-            const eventData = await eventModel.listEvent()
+            const eventData = await eventModel.listEvents()
 
             console.log(eventData)
     
-            res.render('showEvents.ejs', {
+            res.render('indexEvents.ejs', {
                 myPageTitle: "All Events",
                 events: eventData
             })
-            
         } catch (error) {
             console.log(error)
         }
-
     },
 
     newEventForm: (req, res) => {
         res.render('newEventForm')
+    },
+
+    showEvent: async (req, res) =>{
+        try {
+
+            const oneEventData = await eventModel.showEvent(req.params.eventsId)
+
+            res.render('showEvent.ejs', {
+                myPageTitle:req.params.eventsId,
+                oneEvent: oneEventData
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    
     },
 
     createNewEvent: async (req, res) => {
