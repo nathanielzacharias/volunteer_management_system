@@ -65,6 +65,29 @@ const controller = {
 
         // redirect to list events page
         res.redirect('/events')
+    },
+
+    showEditEventForm: async (req, res) => {
+        
+        try {
+            const event =  await eventModel.editEvent(req.params.eventsId)
+
+            res.render ('editEventForm', {
+                myPageTitle: req.params.eventsId,
+                event: event
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
+    },
+
+    updateEvent: async (req, res) => {
+
+        let updateEvent
+
+        await eventModel.findOneAndUpdate({ _id: eventsId }, updateEvent);
+        res.redirect(`/events/${eventsId}`);
     }
 
 

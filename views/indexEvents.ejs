@@ -17,6 +17,7 @@
             <th>Description</th>
             <th> </th>
             <th> </th>
+            <th> </th>
           </tr>
         </thead>
 
@@ -30,6 +31,11 @@
               <td>
                 <form class="in-table-form" method="GET" action="/events/<%= events._id %>">
                   <button type="submit">View</button>
+                </form>
+              </td>
+              <td>
+                <form class="in-table-form" method="GET" action="/events/<%= events._id %>/edit">
+                  <button type="submit">Edit</button>
                 </form>
               </td>
               <td>

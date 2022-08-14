@@ -26,6 +26,11 @@ const model = {
 
     deleteEvent: (docID) => {
         collection.deleteOne(docID)
+    },
+
+    editEvent: () => {
+        const cursor = collection.findOne()
+        return cursor
     }
 
 }

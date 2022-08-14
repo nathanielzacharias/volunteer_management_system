@@ -1,0 +1,24 @@
+<%- include('partials/header'); -%>
+
+    <form method="POST" action="/events/<%= event._id %>?_method=PUT ">
+        <div class="container">
+            <div>
+                <label for="eventTitle"><b>Event title</b></label>
+                <input type="text" placeholder="<%= event.eventTitle %>" name="eventTitle">
+            </div>
+
+            <div>
+                <label for="description"><b>Description of event</b></label>
+                <input type="text" placeholder="<%= event.description %> " name="description">
+            </div>
+
+            <div>
+                <label for="date"><b>Date of event</b></label>
+                <input class="date" type="text" placeholder="<%= event.date %> " name="date">
+            </div>
+        
+            <button type="submit">Update</button>
+        </div>
+    </form>
+
+<%- include('partials/footer'); -%>
