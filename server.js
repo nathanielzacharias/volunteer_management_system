@@ -57,7 +57,7 @@ app.get('/register', (req, res) => {
 const eventController = require('./controllers/event_controller.js')
 //Event
 // 1) Index
-app.get('/events', eventController.indexEvent)
+app.get('/eventsC', eventController.indexEvent)
 // 2) New
 app.get("/events/new", eventController.newEventForm)
 // 3) Show
