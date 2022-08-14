@@ -25,6 +25,11 @@
 - Media Queries
 */
 
+.in-table-form {
+  margin: 0;
+  padding: 0;
+}
+
 .inline-element {
   display: flex;
   flex-direction: row;
