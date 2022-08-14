@@ -30,7 +30,7 @@ const controller = {
 
             res.render('showEvent.ejs', {
                 myPageTitle:req.params.eventsId,
-                oneEvent: oneEventData
+                events: oneEventData
             })
         } catch (error) {
             console.log(error)

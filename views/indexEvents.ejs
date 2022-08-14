@@ -16,6 +16,7 @@
             <th>Event Title</th>
             <th>Description</th>
             <th> </th>
+            <th> </th>
           </tr>
         </thead>
 
@@ -26,6 +27,11 @@
               <td><%= events.date %></td>
               <td><%= events.eventTitle %></td>
               <td><%= events.description %></td>
+              <td>
+                <form class="in-table-form" method="GET" action="/events/<%= events._id %>">
+                  <button type="submit">View</button>
+                </form>
+              </td>
               <td>
                 <form class="in-table-form" method="POST" action="/events/<%= events._id %>?_method=DELETE">
                   <button type="submit">Delete</button>

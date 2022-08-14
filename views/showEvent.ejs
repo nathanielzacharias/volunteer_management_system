@@ -4,9 +4,6 @@
   <h2><%= myPageTitle %></h2>
 </div>
 
-<div class="row container">
-  <div class="four columns"><a href="/">Back</a></div>
-</div>
 
 <div class="container">
     <table class="u-full-width">
@@ -20,9 +17,19 @@
         </thead>
 
         <tbody>
-            <tr>
-                <td><%=   %> </td>
-            </tr>
+
+            
+                <tr>
+                  <td><%= events.date %></td>
+                  <td><%= events.eventTitle %></td>
+                  <td><%= events.description %></td>
+                  <td>
+                    <form class="in-table-form" method="GET" action="/events">
+                      <button type="submit">Back</button>
+                    </form>
+                  </td>
+                </tr>
+
         </tbody>
       </table>
 </div>

@@ -66,12 +66,8 @@ app.get("/events/:eventsId", eventController.showEvent);
 app.post("/events", eventController.createEvent);
 // 5) Destroy
 app.delete("/events/:eventsId", eventController.deleteEvent);
-// // 6) Edit
-// app.get(
-//   "/listings/:listingId/edit",
-//   authMiddleware.isAuthenticated,
-//   listingController.showEditListingForm
-// );
+// 6) Edit
+// app.get("/events/:eventsId/edit", eventController.showEditListingForm);
 // // 7) Update
 // app.put("/listings/:listingId", upload.single("listing_image"), listingController.updateListing);
 
