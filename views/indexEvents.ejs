@@ -24,11 +24,23 @@
           <% events.forEach(e => { %>
 
             <tr>
-                <td><%= e.date.toLocaleString('default', {month: 'long'})%></td>
-                <td><%= e.eventTitle %></td>
-                <td><%= e.description %></td>
-                <td><button>Delete</button></td>
-            </tr>
+              <td><%= events.date%></td>
+              <!-- <td> -->
+                  <!-- <a href=`/events/${oneEvent._id}`> %> ask this -->
+                          <!--  oneEvent.eventTitle %> -->
+                      <!-- </a> -->
+              <!-- </td> -->
+              <td><%= events.description %></td>
+              <td>
+                  <form
+                      method="POST"
+                      style="display: inline-block"
+                      action="/events/<%= events._id %>?_method=DELETE"
+                  >
+                      <button type="submit">Bye bye</button>
+                  </form>
+              </td>
+          </tr>
         
         <% }) %>
 

@@ -20,13 +20,13 @@ const model = {
     //     return collection.findOne(ObjectId(eventID))
     // },
 
-    // createEvent: fields => {
-    //     return collection.insertOne(fields)
-    // },
+    createEvent: fields => {
+        return collection.insertOne(fields)
+    },
 
-    // deleteEvent: (docID) => {
-    //     collection.deleteOne(docID)
-    // }
+    deleteEvent: (docID) => {
+        collection.deleteOne(docID)
+    }
 
 }
 

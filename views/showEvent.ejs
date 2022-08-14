@@ -25,9 +25,21 @@
 
             <tr>
                 <td><%= oneEvent.date.toLocaleString('default', {month: 'long'})%></td>
-                <td><%= oneEvent.eventTitle %></td>
+                <!-- <td> -->
+                    <!-- <a href=`/events/${oneEvent._id}`> %> ask this -->
+                            <!--  oneEvent.eventTitle %> -->
+                        <!-- </a> -->
+                <!-- </td> -->
                 <td><%= oneEvent.description %></td>
-                <td><button>Delete</button></td>
+                <td>
+                    <form
+                        method="POST"
+                        style="display: inline-block"
+                        action="/events/<%= events._id %>?_method=DELETE"
+                    >
+                        <button type="submit">Bye bye</button>
+                    </form>
+                </td>
             </tr>
         
 

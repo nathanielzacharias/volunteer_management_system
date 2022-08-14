@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 //express-session
 //bcrypt
 
-const eventController = require('./controllers/event_controller.js')
+
 
 const app = express()
 const port = process.env.PORT || 3000 //first part is for heroku
@@ -53,17 +53,19 @@ app.get('/register', (req, res) => {
   res.render('registerForm.ejs');
 })
 
+
+const eventController = require('./controllers/event_controller.js')
 //Event
 // 1) Index
 app.get('/events', eventController.indexEvent)
 // 2) New
-app.get('/events/new', eventController.newEventForm)
+app.get("/events/new", eventController.newEventForm)
 // 3) Show
 app.get("/events/:eventsId", eventController.showEvent);
-// // 4) Create
-// app.post("/listings", upload.single("listing_image"), listingController.createListing);
-// // 5) Destroy
-// app.delete("/listings/:listingId", listingController.deleteListing);
+// 4) Create
+app.post("/events", eventController.createEvent);
+// 5) Destroy
+app.delete("/events/:eventsId", eventController.deleteEvent);
 // // 6) Edit
 // app.get(
 //   "/listings/:listingId/edit",

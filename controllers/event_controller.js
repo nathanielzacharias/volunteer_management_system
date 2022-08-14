@@ -38,13 +38,28 @@ const controller = {
     
     },
 
-    createNewEvent: async (req, res) => {
+    createEvent: async (req, res) => {
         const data = req.body
 
         try {
             eventModel.createEvent({eventTitle: data.eventTitle, description: data.description, date:data.date})
         } catch(err) {
             res.send('failed to create event')
+            return
+        }
+
+        // redirect to list events page
+        res.redirect('/events')
+    },
+
+    deleteEvent: async (req, res) => {
+        const data = req.body
+
+        try {
+            eventModel.deleteEvent({docID: data._id})
+            
+        } catch (error) {
+            res.send('failed at event_controller deleteEvent')
             return
         }
 
