@@ -22,26 +22,13 @@
         <tbody>
 
           <% events.forEach(e => { %>
-
             <tr>
-              <td><%= events.date%></td>
-              <!-- <td> -->
-                  <!-- <a href=`/events/${oneEvent._id}`> %> ask this -->
-                          <!--  oneEvent.eventTitle %> -->
-                      <!-- </a> -->
-              <!-- </td> -->
+              <td><%= events.date %></td>
+              <td><%= events.title %></td>
               <td><%= events.description %></td>
-              <td>
-                  <form
-                      method="POST"
-                      style="display: inline-block"
-                      action="/events/<%= events._id %>?_method=DELETE"
-                  >
-                      <button type="submit">Bye bye</button>
-                  </form>
+              <td><button>Dlt</button>
               </td>
           </tr>
-        
         <% }) %>
 
         </tbody>
