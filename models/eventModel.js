@@ -1,7 +1,10 @@
 const { ObjectId } = require('mongodb')
+// const { default: mongoose } = require('mongoose')
+const mongoose = require("mongoose");
 const mongodb = require('../database/mongodb')
 const collectionName = 'events'
 const collection = mongodb.db.collection(collectionName)
+
 
 const model = {
 
@@ -11,8 +14,9 @@ const model = {
         return  cursor.toArray()
     },
 
-    showEvent: () => {
-        const cursor = collection.findOne()
+    showEvent: async (docID) => {
+        const cursor = await collection.findById(docID).exec(); //example code: await Adventure.findById(id, 'name length').exec();
+        // const cursor = collection.findOneById(docID)
         return cursor
     },
 
