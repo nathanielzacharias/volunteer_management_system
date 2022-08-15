@@ -4,7 +4,7 @@ It allows Event Admins to create Events and Roles for which volunteers are neede
 Volunteers may view the Events and sign up for Roles. 
 
 ## Link to hosted app
-Link: xxx
+Link: https://p2-volunteer-management-system.herokuapp.com/
 
 ## Tech stack
 The technologies used in this app are:  
