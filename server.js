@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 
 //connect to mongo Atlas
-const mongoURI = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@cluster0.ru8xaxp.mongodb.net/?retryWrites=true&w=majority`;
+const mongoURI = process.env.MONGODB_URI || `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@cluster0.ru8xaxp.mongodb.net/?retryWrites=true&w=majority`;
 const dbName = "test"
 
 // Server
