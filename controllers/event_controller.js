@@ -1,6 +1,6 @@
 const {ObjectId} = require('mongodb') 
 const model = require('../models/eventModel')
-const eventModel = require('../models/eventModel.js')
+const eventModel = require('../models/eventModel')
 
 const controller = {
 
@@ -8,7 +8,7 @@ const controller = {
         try {
             const eventData = await eventModel.listEvents()
 
-            console.log(eventData)
+            // console.log(eventData)
     
             res.render('indexEvents.ejs', {
                 myPageTitle: "All Events",
@@ -84,10 +84,15 @@ const controller = {
 
     updateEvent: async (req, res) => {
 
-        data = req.body
+        const docID = req.params.eventsId 
+        const data = req.body
+        
+        //verified correct
+        // console.log("!!!!!!!!!!!!!!!!!!------------------------!!!!!!!!!!!!!!!!!!!!!!!", docID)
+        // console.log("!!!!!!!!!!!!!!!!!!------------------------!!!!!!!!!!!!!!!!!!!!!!!", req.body)
 
-        await eventModel.findOneAndUpdate({ _id: data.eventsId }, {eventTitle: "Nats Bday"});
-        res.redirect(`/events/${eventsId}`);
+        await eventModel.updateEvent(docID, data)
+        res.redirect(`/events/${docID}`);
     }
 
 
