@@ -60,14 +60,14 @@ const eventController = require('./controllers/event_controller.js')
 app.get('/events', eventController.indexEvent)
 // 2) New
 app.get("/events/new", eventController.newEventForm)
-// 6) Edit //wrong
-app.get("/events/:eventsId/edit", eventController.showEditEventForm);
-// 3) Show //wrong
+// 6) Edit 
+app.get("/events/:eventsId/edit", eventController.showEditEventForm); //more specific route to come first
+// 3) Show 
 app.get("/events/:eventsId", eventController.showEvent);
 // 4) Create 
 app.post("/events", eventController.createEvent);
 // 5) Destroy
 app.delete("/events/:eventsId", eventController.deleteEvent);
-// 7) Update //working on it
+// 7) Update 
 app.put("/events/:eventsId", eventController.updateEvent);
 
