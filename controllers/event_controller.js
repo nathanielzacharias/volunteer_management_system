@@ -42,7 +42,7 @@ const controller = {
         const data = req.body
 
         try {
-            eventModel.createEvent({eventTitle: data.eventTitle, description: data.description, date:data.date})
+            await eventModel.createEvent({eventTitle: data.eventTitle, description: data.description, date:data.date})
         } catch(err) {
             res.send('failed to create event')
             return
@@ -70,11 +70,11 @@ const controller = {
     showEditEventForm: async (req, res) => {
         
         try {
-            const event =  await eventModel.editEvent(req.params.eventsId)
+            const data =  await eventModel.editEvent(req.params.eventsId)
 
             res.render ('editEventForm', {
                 myPageTitle: req.params.eventsId,
-                event: event
+                event: data
             })
         } catch (error) {
             console.log(error)
@@ -84,9 +84,9 @@ const controller = {
 
     updateEvent: async (req, res) => {
 
-        let updateEvent
+        data = req.body
 
-        await eventModel.findOneAndUpdate({ _id: eventsId }, updateEvent);
+        await eventModel.findOneAndUpdate({ _id: data.eventsId }, {eventTitle: "Nats Bday"});
         res.redirect(`/events/${eventsId}`);
     }
 
