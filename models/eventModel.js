@@ -33,8 +33,10 @@ const model = {
         return collection.insertOne(fields)
     },
 
-    deleteEvent: (docID) => {
-        collection.deleteOne(docID)
+    deleteEvent: async (docID) => {
+        await Event.findByIdAndDelete(docID);
+        // await listingModel.findByIdAndDelete(listingId).exec();
+        console.log("deleteEvent in eventModel.js done")
     },
 
     editEvent: async (docID) => {
@@ -47,22 +49,6 @@ const model = {
         const cursor = await Event.findById(docID)
 
         console.log("------------------------!!!------------", cursor)
-        // cursor.eventTitle = data.eventTitle
-        // cursor.description = data.description
-        // cursor.date = data.date
-        // await cursor.save()
-
-        // await Event.updateOne({ _id: `${docID}`}, {
-        //     eventTitle: `${data.eventTitle}`,
-        //     description: `${data.description}`,
-        //     date: `${data.date}`,
-        //   });
-
-        // await Event.findByIdAndUpdate(docID, {
-        //     eventTitle: `${data.eventTitle}`,
-        //     description: `${data.description}`,
-        //     date: `${data.date}`
-        // })
 
         const payload = {
             eventTitle: data.eventTitle,
@@ -70,7 +56,6 @@ const model = {
             date: data.date
         }
         await Event.findOneAndUpdate({ _id: docID }, payload );
-
 
         return cursor
     }

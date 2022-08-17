@@ -52,11 +52,12 @@ const controller = {
         res.redirect('/events')
     },
 
-    deleteEvent: async (req, res) => {
-        const data = req.body
+    deleteEvent:  async (req, res) => {
+        const data = req.params.eventsId
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1", data)
 
         try {
-            eventModel.deleteEvent({docID: data._id})
+           await  eventModel.deleteEvent(data)
             
         } catch (error) {
             res.send('failed at event_controller deleteEvent')
@@ -87,10 +88,6 @@ const controller = {
         const docID = req.params.eventsId 
         const data = req.body
         
-        //verified correct
-        // console.log("!!!!!!!!!!!!!!!!!!------------------------!!!!!!!!!!!!!!!!!!!!!!!", docID)
-        // console.log("!!!!!!!!!!!!!!!!!!------------------------!!!!!!!!!!!!!!!!!!!!!!!", req.body)
-
         await eventModel.updateEvent(docID, data)
         res.redirect(`/events/${docID}`);
     }
