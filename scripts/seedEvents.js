@@ -46,11 +46,7 @@ mongoose
   });
 //save your data. this is an async operation
 //after you make sure you seeded all the products, disconnect automatically
-events.map(async (p, index) => {
-  await p.save((err, result) => {
-    if (index === events.length - 1) {
-      console.log("DONE!");
-      mongoose.disconnect();
-    }
+events.forEach( (p, index) => {
+   p.save((err, result) => {
   });
 });
