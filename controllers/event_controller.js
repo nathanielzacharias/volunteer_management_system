@@ -54,7 +54,6 @@ const controller = {
 
     deleteEvent:  async (req, res) => {
         const data = req.params.eventsId
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1", data)
 
         try {
            await  eventModel.deleteEvent(data)
