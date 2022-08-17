@@ -6,7 +6,10 @@ const eventSchema = new Schema({
   //eventId: ObjectID, 
   eventTitle: { type: String, required: true },
   description: { type: String, required: true },
-  date:  { type: Date, required: true },
+  date:  { 
+    type: String,
+    required: true 
+  },
   //createdBy: get from userID
 }, {timestamps: true});
 
