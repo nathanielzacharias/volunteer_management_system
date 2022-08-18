@@ -3,10 +3,11 @@ require('dotenv').config()
 const express = require('express')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
-//express-session
+
+const session = require('express-session');
+// const authMiddleware = require('./middlewares/user_auth');
+
 //bcrypt
-
-
 
 const app = express()
 const port = process.env.PORT || 3000 //first part is for heroku
@@ -23,6 +24,15 @@ app.use(express.urlencoded({extended: true}))
 //use methodOverride
 app.use(methodOverride('_method'))
 
+//use middleware for session 
+app.use(session({
+  secret: process.env.SESSION_SECRET ,
+  // resave: false,
+  // saveUninitialized: false,
+  cookie: { secure: false, httpOnly: false, maxAge: 5*60*60*1000 } 
+}));
+// app.use(authMiddleware.setAuthUser);
+
 //connect to mongo Atlas
 const mongoURI = process.env.MONGODB_URI || `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@cluster0.ru8xaxp.mongodb.net/?retryWrites=true&w=majority`;
 const dbName = "test"
@@ -38,6 +48,9 @@ app.listen(port, async () => {
   console.log(`VolunteerManagementSystem is listening on port ${port}`);
 });
 
+
+//----------------------------ROUTES---------------------------------
+
 //home
 app.get('/', (req, res) => {
   res.render('loginForm.ejs');
@@ -49,13 +62,12 @@ app.get('/login', (req, res) => {
 })
 
 //register
-app.get('/register', (req, res) => {
-  res.render('registerForm.ejs');
-})
+// app.get('/register', (req, res) => {
+//   res.render('registerForm.ejs');
+// })
 
-
+//Events
 const eventController = require('./controllers/event_controller.js')
-//Event
 // 1) Index
 app.get('/events', eventController.indexEvent)
 // 2) New
@@ -70,4 +82,8 @@ app.post("/events", eventController.createEvent);
 app.delete("/events/:eventsId", eventController.deleteEvent);
 // 7) Update 
 app.put("/events/:eventsId", eventController.updateEvent);
+
+//Users
+const userController = require ('./controllers/user_controller.js')
+app.get('/register', userController.showRegisterForm)
 
