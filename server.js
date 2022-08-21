@@ -89,4 +89,3 @@ app.get('/login', (req, res) => {
   app.get('/register', userController.showRegisterForm)
   app.post('/register', userController.register)
   
-  app.post('/login', userController.register)

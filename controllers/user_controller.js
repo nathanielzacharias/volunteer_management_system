@@ -30,7 +30,7 @@ const controller = {
           admin: req.body.admin
         });
 
-        // res.render('loginForm')
+        res.render('loginForm')
 
       } catch (err) {
         console.log(`Error registering new user (user_controller: register): ${err}`);
