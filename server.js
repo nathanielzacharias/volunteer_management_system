@@ -7,8 +7,6 @@ const mongoose = require('mongoose')
 const session = require('express-session');
 // const authMiddleware = require('./middlewares/user_auth');
 
-//bcrypt
-
 const app = express()
 const port = process.env.PORT || 3000 //first part is for heroku
 
@@ -19,17 +17,17 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 //use middleware for request parsing
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 //use methodOverride
 app.use(methodOverride('_method'))
 
 //use middleware for session 
 app.use(session({
-  secret: process.env.SESSION_SECRET ,
+  secret: process.env.SESSION_SECRET,
   // resave: false,
   // saveUninitialized: false,
-  cookie: { secure: false, httpOnly: false, maxAge: 5*60*60*1000 } 
+  cookie: { secure: false, httpOnly: false, maxAge: 5 * 60 * 60 * 1000 }
 }));
 // app.use(authMiddleware.setAuthUser);
 
@@ -53,39 +51,37 @@ app.listen(port, async () => {
 
 //home
 app.get('/', (req, res) => {
-  res.render('loginForm.ejs');
+  // res.render('indexEvents', {myPageTitle: 'Index of list Events'});
+  res.render('loginForm')
 })
+
+
+//show success page
+app.get('/success', (req, res) => res.render('success'))
+
+//Events
+const eventController = require('./controllers/event_controller.js')
+// 1) Index
+app.get('/events', eventController.indexEvent)
+// 2) New
+app.get("/events/new", eventController.newEventForm)
+// 6) Edit 
+app.get("/events/:eventsId/edit", eventController.showEditEventForm); //more specific route to come first
+// 3) Show 
+app.get("/events/:eventsId", eventController.showEvent);
+// 4) Create 
+app.post("/events", eventController.createEvent);
+// 5) Destroy
+app.delete("/events/:eventsId", eventController.deleteEvent);
+// 7) Update 
+app.put("/events/:eventsId", eventController.updateEvent);
+
+//Users
+const userController = require('./controllers/user_controller.js');
+const { listEvents } = require('./models/eventModel.js');
+app.get('/register', userController.showRegisterForm)
+app.post('/register', userController.register)
 
 //login
-app.get('/login', (req, res) => {
-  res.render('loginForm.ejs');
-})
-
-
-//register
-// app.get('/register', (req, res) => {
-  //   res.render('registerForm.ejs');
-  // })
-  
-  //Events
-  const eventController = require('./controllers/event_controller.js')
-  // 1) Index
-  app.get('/events', eventController.indexEvent)
-  // 2) New
-  app.get("/events/new", eventController.newEventForm)
-  // 6) Edit 
-  app.get("/events/:eventsId/edit", eventController.showEditEventForm); //more specific route to come first
-  // 3) Show 
-  app.get("/events/:eventsId", eventController.showEvent);
-  // 4) Create 
-  app.post("/events", eventController.createEvent);
-  // 5) Destroy
-  app.delete("/events/:eventsId", eventController.deleteEvent);
-  // 7) Update 
-  app.put("/events/:eventsId", eventController.updateEvent);
-  
-  //Users
-  const userController = require ('./controllers/user_controller.js')
-  app.get('/register', userController.showRegisterForm)
-  app.post('/register', userController.register)
-  
+app.get('/login', (req, res) => res.render('loginForm'))
+app.post('/login', userController.login)

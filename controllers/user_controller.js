@@ -4,17 +4,11 @@ const bcrypt = require('bcrypt');
 const userModel = require('../models/user');
 const mongoose = require('mongoose')
 
-
-//user constroller
-
-// const User = require('../models/user')
-
-
 const controller = {
 
     showRegisterForm: (req, res) => {
         res.render('registerForm.ejs');
-      },
+    },
 
     register: async (req, res) => {
 
@@ -30,7 +24,7 @@ const controller = {
           admin: req.body.admin
         });
 
-        res.render('loginForm')
+        res.redirect  ('success')
 
       } catch (err) {
         console.log(`Error registering new user (user_controller: register): ${err}`);
@@ -39,7 +33,32 @@ const controller = {
       }
 
 
+    },
+
+    login: async (req, res) => {
+      try {
+        const user = await userModel.findOne({
+          username: req.body.username
+        })
+
+        const passwordCorrect = await bcrypt.compare(req.body.password, user.password);
+        
+      } catch (err) {
+        res.send('username or password error')
+        return
+      }
+
+      req.session.regenerate( () => {
+        req.session.user = user.username;
+        req.session.save();
+      })
+
+      res.redirect('success');
     }
+
+
+
+
 
 }
 
