@@ -61,29 +61,32 @@ app.get('/login', (req, res) => {
   res.render('loginForm.ejs');
 })
 
+
 //register
 // app.get('/register', (req, res) => {
-//   res.render('registerForm.ejs');
-// })
-
-//Events
-const eventController = require('./controllers/event_controller.js')
-// 1) Index
-app.get('/events', eventController.indexEvent)
-// 2) New
-app.get("/events/new", eventController.newEventForm)
-// 6) Edit 
-app.get("/events/:eventsId/edit", eventController.showEditEventForm); //more specific route to come first
-// 3) Show 
-app.get("/events/:eventsId", eventController.showEvent);
-// 4) Create 
-app.post("/events", eventController.createEvent);
-// 5) Destroy
-app.delete("/events/:eventsId", eventController.deleteEvent);
-// 7) Update 
-app.put("/events/:eventsId", eventController.updateEvent);
-
-//Users
-const userController = require ('./controllers/user_controller.js')
-app.get('/register', userController.showRegisterForm)
-
+  //   res.render('registerForm.ejs');
+  // })
+  
+  //Events
+  const eventController = require('./controllers/event_controller.js')
+  // 1) Index
+  app.get('/events', eventController.indexEvent)
+  // 2) New
+  app.get("/events/new", eventController.newEventForm)
+  // 6) Edit 
+  app.get("/events/:eventsId/edit", eventController.showEditEventForm); //more specific route to come first
+  // 3) Show 
+  app.get("/events/:eventsId", eventController.showEvent);
+  // 4) Create 
+  app.post("/events", eventController.createEvent);
+  // 5) Destroy
+  app.delete("/events/:eventsId", eventController.deleteEvent);
+  // 7) Update 
+  app.put("/events/:eventsId", eventController.updateEvent);
+  
+  //Users
+  const userController = require ('./controllers/user_controller.js')
+  app.get('/register', userController.showRegisterForm)
+  app.post('/register', userController.register)
+  
+  app.post('/login', userController.register)

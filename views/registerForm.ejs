@@ -1,15 +1,15 @@
 <%- include('partials/header'); -%>
 
-    <form>
+    <form method="POST" action="/register" >
         <div class="container">
             <div>
-                <label for="uname"><b>Choose a username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="username"><b>Choose a username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
             </div>
 
             <div>
-                <label for="psw"><b>Choose a password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <label for="password"><b>Choose a password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
             </div>
         
             <div>
