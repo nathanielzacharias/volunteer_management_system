@@ -108,7 +108,7 @@ const controller = {
       //find and update user Model
       const user = await userModel.findOneAndUpdate(
       { username: req.session.user }, 
-      { volunteeringFor: volunteeringFor }
+      { $push: {volunteeringFor: volunteeringFor} }
       )
 
       res.redirect('/profile')
