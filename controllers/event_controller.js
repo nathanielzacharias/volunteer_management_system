@@ -32,7 +32,8 @@ const controller = {
             const oneEventData = await eventModel.showEvent(req.params.eventsId)
 
             res.render('showEvent.ejs', {
-                myPageTitle:req.params.eventsId,
+                // myPageTitle:req.params.eventsId,
+                myPageTitle: oneEventData.eventTitle,
                 events: oneEventData
             })
         } catch (error) {
