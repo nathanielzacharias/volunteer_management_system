@@ -1,7 +1,7 @@
-# Volunteer Management System
-This is a Volunteer Management System.  
+# VolunteerMe : a volunteer management system
+This is a volunteer management system.  
 It allows Event Admins to create Events and Roles for which volunteers are needed.  
-Volunteers may view the Events and sign up for Roles. 
+Volunteers may view the Events and sign up for Roles.
 
 ## Link to hosted app
 Link: https://p2-volunteer-management-system.herokuapp.com/
@@ -12,9 +12,10 @@ The technologies used in this app are:
 - express js
 - ejs 
 - mongoDB
-- mongoose
 - mongo Atlas 
+- mongoose
 - dot env
+- bcrypt
 - Skeleton (CSS)
 
 ## Approach taken
@@ -28,7 +29,9 @@ UI/UX considerations included:
 Development focused first on giving the Events full CRUD functionality with 7 RESTful routes before adding other features.  
 
 ## Unsolved problems
-- [ ] CSS styling is currently broken
+- [x] CSS styling is currently broken
+- [ ] DB Events does not include Users who have volunteered
+- [ ] Do not show Create new event button 
 - [ ] Grant user privileges of Admin or Volunteer
 
 ## User stories
