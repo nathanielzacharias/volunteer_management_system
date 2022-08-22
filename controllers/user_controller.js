@@ -50,12 +50,21 @@ const controller = {
         });
       })
 
-      res.locals.loggedIn = true;
-
     } catch (err) {
       res.send('username or password error')
       return
     }
+  },
+
+  logout: async (req, res) => {
+    req.session.user = null;
+
+    req.session.save ( () => {
+      req.session.regenerate ( () => {
+        res.redirect('/events')
+      })
+    })
+
   }
 
 
