@@ -18,16 +18,15 @@
             </div>
 
             <div>
-                <p><b>Are you an admin?</b></p>
-                
-                <fieldset  class="inline-element" >
-
-                    <input type="radio" name="admin" value="false" checked="checked" />
-                    <label for="admin" class="inline-label">No</label>
-
-                    <input type="radio" name="admin" value="true" />
-                    <label for="admin" class="inline-label">Yes</label>
-                </fieldset>
+                <p class="form-question"><b>Are you an admin?</b>
+                    <span class="radio-btn-form">
+                        <input type="radio" name="admin" for="admin" value="false" checked="checked"> No </input>
+                    </span>
+                    
+                    <span class="radio-btn-form">
+                        <input type="radio" name="admin" for="admin" value="true"> Yes </input>
+                    </span>
+                </p>
             </div>
 
             <button type="submit">Register</button>

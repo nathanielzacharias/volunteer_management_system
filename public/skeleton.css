@@ -24,6 +24,15 @@
 - Clearing
 - Media Queries
 */
+.form-question {
+  padding-top: 3%;
+}
+
+.radio-btn-form {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
 .edit-date {
   
 }
