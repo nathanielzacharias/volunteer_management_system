@@ -88,3 +88,4 @@ app.get('/logout', loggedIn.loggedIn, userController.logout)
 //profile
 app.post('/profile/:eventsId', loggedIn.loggedIn, userController.addEventToProfile)
 app.get('/profile', loggedIn.loggedIn, userController.indexProfile)
+app.delete('/profile/:eventsId', loggedIn.loggedIn, userController.removeEventFromProfile)

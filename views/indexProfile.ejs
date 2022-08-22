@@ -18,14 +18,14 @@
         <tbody>
 
             <% if (volunteeringFor) { %> 
-                <% volunteeringFor.forEach(events => { %>
+                <% volunteeringFor.forEach((events, ind) => { %>
                   <tr>
                       <td><%= events.date %></td>
                       <td><%= events.eventTitle %></td>
                       <td><%= events.description %></td>
                       <td>
-                          <form class="in-table-form" method="POST" action="/profile/<%= events._id %>?_method=DELETE">
-                          <button type="submit">Unvolunteer (not working)</button>
+                          <form class="in-table-form" method="POST" action="/profile/<%= events._id%>?_method=DELETE">
+                          <button type="submit">Unvolunteer</button>
                           </form>
                       </td>
                 </tr>

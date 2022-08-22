@@ -116,6 +116,24 @@ const controller = {
     } catch (err) {
       res.send("user_controller > addEventToProfile catch")      
     }
+  },
+
+  removeEventFromProfile: async (req, res) => {
+    const id = req.params.eventsId
+
+    try {
+      //find and update user Model
+      const user = await userModel.findOneAndUpdate(
+        { username: req.session.user }, 
+        { $pull: {volunteeringFor: {_id: id}} }
+        )
+  
+        res.redirect('/profile')
+      
+    } catch (err) {
+      res.send("user_controller > removeEventFromProfile catch")
+      
+    }
   }
 
 
