@@ -45,17 +45,18 @@ const controller = {
 
       req.session.regenerate(() => {
         req.session.user = user.username;
-        req.session.save();
+        req.session.save(() => {
+          res.redirect(`/success/${user.username}`);
+        });
       })
-
-      res.redirect('success');
-
 
     } catch (err) {
       res.send('username or password error')
       return
     }
   }
+
+  
 
 }
 

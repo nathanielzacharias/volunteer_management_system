@@ -2,6 +2,13 @@
 
 <div class="container">
     <h2>Successful operation!</h2>
+    
+    <% if (username) { %> 
+        <p> you are logged in as 
+            <%= username %> 
+        </p>
+    <% } %> 
+    
 </div>
 
 <%- include('partials/footer'); -%>

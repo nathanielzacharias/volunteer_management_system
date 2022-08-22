@@ -48,19 +48,16 @@ app.listen(port, async () => {
 
 
 //----------------------------ROUTES---------------------------------
+const eventController = require('./controllers/event_controller.js')
 
 //home
-app.get('/', (req, res) => {
-  // res.render('indexEvents', {myPageTitle: 'Index of list Events'});
-  res.render('loginForm')
-})
-
+app.get('/', eventController.indexEvent)
 
 //show success page
+app.get('/success/:username', (req, res) => res.render('success',{username: req.params.username}))
 app.get('/success', (req, res) => res.render('success'))
 
 //Events
-const eventController = require('./controllers/event_controller.js')
 // 1) Index
 app.get('/events', eventController.indexEvent)
 // 2) New
