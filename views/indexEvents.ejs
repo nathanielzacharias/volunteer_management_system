@@ -5,7 +5,9 @@
 </div>
 
 <div class="row container">
-  <div class="four columns"><a href="/events/new">Create new event</a></div>
+  <form class="in-table-form" method="GET" action="/events/new">
+    <button type="submit">Create new event</button>
+  </form>
 </div>
 
 <div class="container">
@@ -22,7 +24,7 @@
               <th> </th>
               <th> </th>
             <% } %> 
-            
+
           </tr>
         </thead>
 
