@@ -50,13 +50,15 @@ const controller = {
         });
       })
 
+      res.locals.loggedIn = true;
+
     } catch (err) {
       res.send('username or password error')
       return
     }
   }
 
-  
+
 
 }
 

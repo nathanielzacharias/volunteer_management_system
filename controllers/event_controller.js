@@ -14,6 +14,9 @@ const controller = {
                 myPageTitle: "All Events",
                 events: eventData
             })
+
+            res.locals.loggedIn = false;
+
         } catch (error) {
             console.log(error)
         }

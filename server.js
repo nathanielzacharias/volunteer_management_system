@@ -49,36 +49,37 @@ app.listen(port, async () => {
 
 //----------------------------ROUTES---------------------------------
 const eventController = require('./controllers/event_controller.js')
+const loggedIn = require('./middlewares/loggedIn')
 
 //home
-app.get('/', eventController.indexEvent)
+app.get('/', loggedIn.loggedIn, eventController.indexEvent)
 
 //show success page
-app.get('/success/:username', (req, res) => res.render('success',{username: req.params.username}))
-app.get('/success', (req, res) => res.render('success'))
+app.get('/success/:username', loggedIn.loggedIn, (req, res) => res.render('success',{username: req.params.username}))
+app.get('/success', loggedIn.loggedIn, (req, res) => res.render('success'))
 
 //Events
 // 1) Index
-app.get('/events', eventController.indexEvent)
+app.get('/events', loggedIn.loggedIn, eventController.indexEvent)
 // 2) New
-app.get("/events/new", eventController.newEventForm)
+app.get("/events/new", loggedIn.loggedIn, eventController.newEventForm)
 // 6) Edit 
-app.get("/events/:eventsId/edit", eventController.showEditEventForm); //more specific route to come first
+app.get("/events/:eventsId/edit", loggedIn.loggedIn, eventController.showEditEventForm); //more specific route to come first
 // 3) Show 
-app.get("/events/:eventsId", eventController.showEvent);
+app.get("/events/:eventsId", loggedIn.loggedIn, eventController.showEvent);
 // 4) Create 
-app.post("/events", eventController.createEvent);
+app.post("/events", loggedIn.loggedIn, eventController.createEvent);
 // 5) Destroy
-app.delete("/events/:eventsId", eventController.deleteEvent);
+app.delete("/events/:eventsId", loggedIn.loggedIn, eventController.deleteEvent);
 // 7) Update 
-app.put("/events/:eventsId", eventController.updateEvent);
+app.put("/events/:eventsId", loggedIn.loggedIn, eventController.updateEvent);
 
 //Users
 const userController = require('./controllers/user_controller.js');
 const { listEvents } = require('./models/eventModel.js');
-app.get('/register', userController.showRegisterForm)
-app.post('/register', userController.register)
+app.get('/register', loggedIn.loggedIn, userController.showRegisterForm)
+app.post('/register', loggedIn.loggedIn, userController.register)
 
 //login
-app.get('/login', (req, res) => res.render('loginForm'))
-app.post('/login', userController.login)
+app.get('/login', loggedIn.loggedIn, (req, res) => res.render('loginForm'))
+app.post('/login', loggedIn.loggedIn, userController.login)
