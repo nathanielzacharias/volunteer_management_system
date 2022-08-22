@@ -23,7 +23,7 @@ const controller = {
         admin: req.body.admin
       });
 
-      res.redirect('success')
+      res.redirect('/success')
 
     } catch (err) {
       console.log(`Error registering new user (user_controller: register): ${err}`);
@@ -67,7 +67,7 @@ const controller = {
 
   },
 
-  
+
 
 }
 

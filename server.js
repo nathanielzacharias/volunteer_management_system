@@ -56,7 +56,7 @@ app.get('/', loggedIn.loggedIn, eventController.indexEvent)
 
 //show success page
 app.get('/success/:username', loggedIn.loggedIn, (req, res) => res.render('success',{username: req.params.username}))
-app.get('/success', loggedIn.loggedIn, (req, res) => res.render('success'))
+app.get('/success', loggedIn.loggedIn, (req, res) => res.render('success', {username: null}))
 
 //Events
 // 1) Index
