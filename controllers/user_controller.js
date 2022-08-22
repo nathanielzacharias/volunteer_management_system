@@ -67,6 +67,27 @@ const controller = {
 
   },
 
+  indexProfile: async (req, res) => {
+
+    console.log('------------------------username:', req.session.user)
+    console.log('req.body', req.body)
+
+    try {
+      const user = await userModel.findOne({
+        username: req.session.user
+      })
+      console.log('------------------------user.volunteeringFor:', user.volunteeringFor)
+
+
+      res.render('indexProfile.ejs', {
+        myPageTitle: req.session.user,
+        volunteeringFor: user.volunteeringFor
+      })
+
+    } catch (err) {
+      res.send("user_controller > showProfile catch")
+    }
+  }
 
 
 }

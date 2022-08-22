@@ -84,3 +84,7 @@ app.post('/register', loggedIn.loggedIn, userController.register)
 app.get('/login', loggedIn.loggedIn, (req, res) => res.render('loginForm'))
 app.post('/login', loggedIn.loggedIn, userController.login)
 app.get('/logout', loggedIn.loggedIn, userController.logout)
+
+//profile
+// app.post('/profile/:eventsId', loggedIn.loggedIn, userController.addEventToProfile)
+app.get('/profile', loggedIn.loggedIn, userController.indexProfile)
