@@ -16,8 +16,13 @@
             <th>Event Title</th>
             <th>Description</th>
             <th> </th>
-            <th> </th>
-            <th> </th>
+
+            <% if (loggedIn) { %> 
+              <th> </th>
+              <th> </th>
+              <th> </th>
+            <% } %> 
+            
           </tr>
         </thead>
 
@@ -33,16 +38,26 @@
                   <button type="submit">View</button>
                 </form>
               </td>
-              <td>
-                <form class="in-table-form" method="GET" action="/events/<%= events._id %>/edit">
-                  <button type="submit">Edit</button>
-                </form>
-              </td>
-              <td>
-                <form class="in-table-form" method="POST" action="/events/<%= events._id %>?_method=DELETE">
-                  <button type="submit">Delete</button>
-                </form>
-              </td>
+
+
+              <% if(loggedIn) { %>
+                <td>
+                  <form class="in-table-form" method="GET" action="/events/<%= events._id %>/edit">
+                    <button type="submit">Edit</button>
+                  </form>
+                </td>
+                <td>
+                  <form class="in-table-form" method="POST" action="/events/<%= events._id %>?_method=DELETE">
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
+                <td>
+                  <form class="in-table-form" method="POST" action="/profile/<%= events._id %>">
+                    <button type="submit">Volunteer</button>
+                  </form>
+                </td>
+              <% } %> 
+
           </tr>
         <% }) %>
 
