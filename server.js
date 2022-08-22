@@ -86,5 +86,5 @@ app.post('/login', loggedIn.loggedIn, userController.login)
 app.get('/logout', loggedIn.loggedIn, userController.logout)
 
 //profile
-// app.post('/profile/:eventsId', loggedIn.loggedIn, userController.addEventToProfile)
+app.post('/profile/:eventsId', loggedIn.loggedIn, userController.addEventToProfile)
 app.get('/profile', loggedIn.loggedIn, userController.indexProfile)

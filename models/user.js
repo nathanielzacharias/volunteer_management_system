@@ -9,7 +9,7 @@ const userSchema = new Schema({
     email: { type: String, required: true },
     mobile: Number, 
     admin: Boolean, 
-    volunteeringFor : [{type: String}]
+    volunteeringFor : [{date: String, eventTitle: String, description: String }]
 }, {timestamps: true});
 
 
